@@ -38,3 +38,32 @@ click in **_publish a new network port_** and define host to **3000** and contai
 In Advanced container settings, go to **_Volumes_** section. Defines container to __/usr/share/nginx/html/__ and select your __ohif-local__ volume.
 
 ![img 2.2](./docs/image/img-2.2.png)
+
+## Ohif
+After you have made all these settings, you must change __app-config__ to use your dcm4che container
+
+You can use the below command to edit the file in nano if you have the volume created as in the portainer aproach:
+
+```bash
+sudo nano /var/lib/docker/volumes/ohif/_data/app-config.js
+```
+
+```bash
+    wadoUriRoot: 'http://<local ip address>:8080/dcm4chee-arc/aets/DCM4CHEE/wado',
+    qidoRoot: 'http://<local ip address>:8080/dcm4chee-arc/aets/DCM4CHEE/rs',
+    wadoRoot: 'http://<local ip address>:8080/dcm4chee-arc/aets/DCM4CHEE/rs',
+```
+
+* PS. don't forget to check if your dcm4che instance is started
+
+After that save the file and close.
+
+Please update your browser. It is normal not to update from immediately. Just in case, restart your ohif container.
+
+## References
+
+[dcm4che w/ docker](https://docs.ohif.org/history/v1/connecting-to-image-archives/dcm4chee-with-docker.html) 
+[configure ohif](https://openintegrator.com/how-to-install-ohif-web-based-dicom-viewer-in-docker-and-connect-to-dcm4chee-vna/)
+
+
+
